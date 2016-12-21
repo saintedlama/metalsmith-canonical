@@ -1,0 +1,35 @@
+{
+  "name": "metalsmith-canonical",
+  "version": "1.0.0",
+  "description": "A metalsmith plugin to add a canonical url property to pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test --recursive",
+    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saintedlama/metalsmith-canonical.git"
+  },
+  "keywords": [
+    "metalsmith",
+    "seo",
+    "canonical"
+  ],
+  "author": "Christoph Walcher <christoph.walcher@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saintedlama/metalsmith-canonical/issues"
+  },
+  "homepage": "https://github.com/saintedlama/metalsmith-canonical#readme",
+  "dependencies": {
+    "lodash": "^4.17.2",
+    "multimatch": "^2.1.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.5",
+    "metalsmith": "^2.3.0",
+    "mocha": "^3.2.0"
+  }
+}
