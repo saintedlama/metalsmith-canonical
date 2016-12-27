@@ -19,6 +19,27 @@ describe('metalsmith-canonical', function() {
       .build(done);
   });
 
+  it('should omit tailing slashes if set to true', function(done) {
+    Metalsmith('test/fixtures/omit-trailing-slashes')
+      .use(canonical({ hostname: 'http://www.website.com/', omitTrailingSlashes: true, omitIndex: true }))
+      .use(expectFile('index.html', f => expect(f.canonical).to.equal('http://www.website.com')))
+      .build(done);
+  });
+
+  it('should not omit tailing slashes if set to false', function(done) {
+    Metalsmith('test/fixtures/omit-trailing-slashes')
+      .use(canonical({ hostname: 'http://www.website.com/', omitTrailingSlashes: false, omitIndex: true }))
+      .use(expectFile('index.html', f => expect(f.canonical).to.equal('http://www.website.com/')))
+      .build(done);
+  });
+
+  it('should omit tailing slashes by default', function(done) {
+    Metalsmith('test/fixtures/omit-trailing-slashes')
+      .use(canonical({ hostname: 'http://www.website.com/', omitIndex: true }))
+      .use(expectFile('index.html', f => expect(f.canonical).to.equal('http://www.website.com')))
+      .build(done);
+  });
+
   it('should not override existing canonical property', function(done) {
     Metalsmith('test/fixtures/override')
       .use(canonical({ hostname: 'http://www.website.com/' }))

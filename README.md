@@ -50,6 +50,13 @@ A [multimatch](https://github.com/sindresorhus/multimatch) pattern. Only for fil
 
 Will replace any paths ending in `index.html` with `''`. Useful when you're using [metalsmith-permalinks](https://github.com/segmentio/metalsmith-permalinks).
 
+##### omitTrailingSlashes
+
+* `optional`
+* `default: true`
+
+Will remove any trailing slashes.
+
 ## License
 
 ISC
