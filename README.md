@@ -1,4 +1,4 @@
-# metalsmith-sitemap
+# metalsmith-canonical
 [![npm version][npm-badge]][npm-url]
 [![Build Status][travis-badge]][travis-url]
 
