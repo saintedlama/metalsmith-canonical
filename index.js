@@ -5,6 +5,7 @@ const multimatch  = require('multimatch');
 module.exports = function canonical(options) {
   options = options || {};
   options.omitIndex = !!options.omitIndex;
+  options.omitTrailingSlashes = _.isUndefined(options.omitTrailingSlashes) ? true : options.omitTrailingSlashes;
   options.pattern = options.pattern || '**/*.html';
 
   return function(files, metalsmith, done) {
@@ -21,13 +22,19 @@ module.exports = function canonical(options) {
 
     // Builds a url
     function buildUrl(file) {
-      // Remove index.html if necessary
+      let url = file;
+
       if (options.omitIndex) {
-        return omitTrailingSlashes(joinUrl(options.hostname, replaceBackslash(_.trimEnd(file, 'index.html'))));
+        url = _.trimEnd(url, 'index.html')
       }
 
-      // Otherwise just use 'file'
-      return omitTrailingSlashes(joinUrl(options.hostname, replaceBackslash(file)));
+      url = joinUrl(options.hostname, replaceBackslash(url));
+
+      if (options.omitTrailingSlashes) {
+        url = omitTrailingSlashes(url);
+      }
+
+      return url;
     }
 
     function replaceBackslash(url) {
