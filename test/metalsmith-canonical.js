@@ -14,6 +14,18 @@ describe('metalsmith-canonical', function() {
     }
   });
 
+  it('should throw if required hostname option was omitted by passing in empty options', () => {
+    const canonical = metalsmithCanonical();
+
+    try {
+      canonical({ 'a\\b\\c.html': {} }, {}, () => {});
+
+      throw new Error('Should throw if required "hostname" option was omitted');
+    } catch (e) {
+      expect(e).to.exist;
+    }
+  });
+
   it('should replace all backslashes in url', () => {
     const canonical = metalsmithCanonical({
       hostname: 'http://localhost:8080',
