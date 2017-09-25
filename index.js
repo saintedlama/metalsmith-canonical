@@ -38,10 +38,6 @@ module.exports = function canonical(options) {
     }
 
     function replaceBackslash(url) {
-      if (!url) {
-        return url;
-      }
-
       return _.replace(url, /\\/g, '/');
     }
 
