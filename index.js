@@ -1,5 +1,5 @@
-const path = require('path');
 const _ = require('lodash');
+const joinUrl = require('url-join');
 const multimatch  = require('multimatch');
 
 module.exports = function canonical(options) {
@@ -38,23 +38,11 @@ module.exports = function canonical(options) {
     }
 
     function replaceBackslash(url) {
-      if (path.sep != '/') {
-        return _.replace(url, path.sep, '/');
+      if (!url) {
+        return url;
       }
 
-      return url;
-    }
-
-    function joinUrl(left, right) {
-      if (_.endsWith(left, '/') && _.startsWith(right, '/')) {
-        return left.substring(0, left.length - 2) + right;
-      }
-
-      if (!_.endsWith(left, '/') && !_.startsWith(right, '/')) {
-        return left + '/' + right;
-      }
-
-      return left + right;
+      return _.replace(url, /\\/g, '/');
     }
 
     function omitTrailingSlashes(url) {
