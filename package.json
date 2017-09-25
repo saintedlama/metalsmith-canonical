@@ -4,8 +4,10 @@
   "description": "A metalsmith plugin to add a canonical url property to pages",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test --recursive",
-    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha"
+    "test": "cross-env NODE_ENV=test nyc --reporter=text-summary mocha --recursive --throw-deprecation",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -23,13 +25,16 @@
   },
   "homepage": "https://github.com/saintedlama/metalsmith-canonical#readme",
   "dependencies": {
-    "lodash": "^4.17.2",
+    "lodash": "^4.17.4",
     "multimatch": "^2.1.0"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "istanbul": "^0.4.5",
+    "chai": "^4.1.2",
+    "coveralls": "^2.13.1",
+    "cross-env": "^5.0.5",
+    "eslint": "^4.7.2",
     "metalsmith": "^2.3.0",
-    "mocha": "^3.2.0"
+    "mocha": "^3.5.3",
+    "nyc": "^11.2.1"
   }
 }
