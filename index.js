@@ -25,7 +25,7 @@ module.exports = function canonical(options) {
       let url = file;
 
       if (options.omitIndex) {
-        url = _.trimEnd(url, 'index.html')
+        url = omitIndex(url);
       }
 
       url = joinUrl(options.hostname, replaceBackslash(url));
@@ -43,6 +43,16 @@ module.exports = function canonical(options) {
 
     function omitTrailingSlashes(url) {
       return _.trimEnd(url, '/');
+    }
+
+    function omitIndex(url) {
+      const index = 'index.html';
+
+      if (url.lastIndexOf(index) == url.length - index.length) {
+        return url.substring(0, url.lastIndexOf(index));
+      }
+
+      return url;
     }
 
     done();
