@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-canonical",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A metalsmith plugin to add a canonical url property to pages",
   "main": "index.js",
   "scripts": {
