@@ -48,7 +48,7 @@ module.exports = function canonical(options) {
     function omitIndex(url) {
       const index = 'index.html';
 
-      if (url.lastIndexOf(index) == url.length - index.length) {
+      if (url.lastIndexOf(index) === url.length - index.length) {
         return url.substring(0, url.lastIndexOf(index));
       }
 
