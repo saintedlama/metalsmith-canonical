@@ -12,6 +12,6 @@
   "rules": {
     "no-var":"error",
     "prefer-const":"error",
-    "eqeqeq":"error"
+    "no-trailing-spaces":"error"
   }
 }

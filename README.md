@@ -30,34 +30,34 @@ This plugin should be run after metalsmith-permalinks or metalsmith-moveup plugi
 
 You can pass options to `metalsmith-canonical` with the [Javascript API](https://github.com/segmentio/metalsmith#api) or [CLI](https://github.com/segmentio/metalsmith#cli). The options are:
 
-##### hostname
+### hostname
 
 * `required`
 
 The hostname used for generating the canonical url.
 
-##### pattern
+### pattern
 
 * `optional`
 * `default: '**/*.html'`
 
 A [multimatch](https://github.com/sindresorhus/multimatch) pattern. Only for files that match this pattern a canonical url property will be added. Can be a string or an array of strings.
 
-##### omitIndex
+### omitIndex
 
 * `optional`
 * `default: false`
 
 Will replace any paths ending in `index.html` with `''`. Useful when you're using [metalsmith-permalinks](https://github.com/segmentio/metalsmith-permalinks).
 
-##### omitTrailingSlashes
+### omitTrailingSlashes
 
 * `optional`
 * `default: true`
 
 Will remove any trailing slashes.
 
-##### omitExtensions
+### omitExtensions
 
 * `optional`
 * `default: undefined`

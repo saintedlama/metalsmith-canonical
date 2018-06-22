@@ -9,12 +9,11 @@ module.exports = function canonical(options) {
   options.pattern = options.pattern || '**/*.html';
 
   if (options.omitExtensions) {
-    options.omitExtensions.forEach((ext) => {
+    const malformedExtensions = options.omitExtensions.filter(ext => ext[0] !== '.');
 
-      if (ext[0] !== '.') {
-        throw new TypeError(`Extension ${ext} doesn't start with a dot.`);
-      }
-    });
+    if (malformedExtensions.length > 0) {
+      throw new Error(`Extensions "${malformedExtensions.join(', ')}" do not start with a dot.`);
+    }
   }
 
   return function(files, metalsmith, done) {

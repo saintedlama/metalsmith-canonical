@@ -34,7 +34,7 @@ describe('metalsmith-canonical', function() {
     const files = {
       'a\\b\\c.html': {}
     };
-    
+
     canonical(files, {}, () => {});
 
     expect(files).to.deep.equal({
@@ -52,7 +52,7 @@ describe('metalsmith-canonical', function() {
     const files = {
       'a\\b\\c.html': { canonical: 'something' }
     };
-    
+
     canonical(files, {}, () => {});
 
     expect(files).to.deep.equal({
@@ -62,7 +62,7 @@ describe('metalsmith-canonical', function() {
     });
   });
 
-  
+
   it('should omit trailing slashes and "index.html" if specified', () => {
     const canonical = metalsmithCanonical({
       hostname: 'http://localhost:8080',
@@ -73,7 +73,7 @@ describe('metalsmith-canonical', function() {
     const files = {
       'a\\b\\c\\index.html': {}
     };
-    
+
     canonical(files, {}, () => {});
 
     expect(files).to.deep.equal({
@@ -93,7 +93,7 @@ describe('metalsmith-canonical', function() {
     const files = {
       'a\\b\\c\\index.html': {}
     };
-    
+
     canonical(files, {}, () => {});
 
     expect(files).to.deep.equal({
@@ -112,7 +112,7 @@ describe('metalsmith-canonical', function() {
     const files = {
       'a\\b\\c\\indexhtml.html': {}
     };
-    
+
     canonical(files, {}, () => {});
 
     expect(files).to.deep.equal({
@@ -132,7 +132,7 @@ describe('metalsmith-canonical', function() {
     const files = {
       'a\\index.html\\c\\index.html': {}
     };
-    
+
     canonical(files, {}, () => {});
 
     expect(files).to.deep.equal({
@@ -143,7 +143,6 @@ describe('metalsmith-canonical', function() {
   });
 
   it('should omit extensions if omitExtensions option is specified', () => {
-
     const canonical = metalsmithCanonical({
       hostname: 'http://localhost:8080',
       pattern: '**/*',
@@ -172,18 +171,14 @@ describe('metalsmith-canonical', function() {
   });
 
   it('should throw if omitted extensions doesn\'t start with a dot', () => {
-
     expect(() => metalsmithCanonical({
       hostname: 'http://localhost:8080',
       pattern: '**/*',
       omitExtensions: ['.html', 'tml'],
-    })).to.throw(TypeError);
-
+    })).to.throw(Error);
   });
 
-
   it('should return shortest url if several omitExtensions satisfy a file', () => {
-
     const canonical = metalsmithCanonical({
       hostname: 'http://localhost:8080',
       pattern: '**/*',
@@ -201,7 +196,6 @@ describe('metalsmith-canonical', function() {
         canonical: 'http://localhost:8080/a/index.html/c/foo',
       }
     });
-
   });
 
   it('should not process non matching files', () => {
@@ -214,7 +208,7 @@ describe('metalsmith-canonical', function() {
     const files = {
       'a\\b\\c\\index.ejs': {}
     };
-    
+
     canonical(files, {}, () => {});
 
     expect(files).to.deep.equal({
