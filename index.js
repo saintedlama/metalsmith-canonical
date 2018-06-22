@@ -8,6 +8,15 @@ module.exports = function canonical(options) {
   options.omitTrailingSlashes = _.isUndefined(options.omitTrailingSlashes) ? true : options.omitTrailingSlashes;
   options.pattern = options.pattern || '**/*.html';
 
+  if (options.omitExtensions) {
+    options.omitExtensions.forEach((ext) => {
+
+      if (ext[0] !== '.') {
+        throw new TypeError(`Extension ${ext} doesn't start with a dot.`);
+      }
+    });
+  }
+
   return function(files, metalsmith, done) {
     if (!options.hostname) { return done(new Error('metalsmith-canonical requires hostname option to be set')); }
 
@@ -26,6 +35,9 @@ module.exports = function canonical(options) {
 
       if (options.omitIndex) {
         url = omitIndex(url);
+      }
+      if (options.omitExtensions) {
+        url = omitExtensions(url, options.omitExtensions);
       }
 
       url = joinUrl(options.hostname, replaceBackslash(url));
@@ -48,10 +60,26 @@ module.exports = function canonical(options) {
     function omitIndex(url) {
       const index = 'index.html';
 
-      if (url.lastIndexOf(index) == url.length - index.length) {
+      if (url.lastIndexOf(index) === url.length - index.length) {
         return url.substring(0, url.lastIndexOf(index));
       }
 
+      return url;
+    }
+
+    function omitExtensions(url, extensionsToOmit) {
+
+      const strippedUrls = extensionsToOmit.map((ext) => {
+
+        if (url.endsWith(ext)) {
+          return url.substring(0, url.lastIndexOf(ext));
+        }
+        return false;
+      }).filter((value) => value);
+
+      if (strippedUrls.length) {
+        return strippedUrls.sort()[0];
+      }
       return url;
     }
 

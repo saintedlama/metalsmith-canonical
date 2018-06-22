@@ -57,6 +57,15 @@ Will replace any paths ending in `index.html` with `''`. Useful when you're usin
 
 Will remove any trailing slashes.
 
+##### omitExtensions
+
+* `optional`
+* `default: undefined`
+* `example: ['.html', '.htm']`
+
+Will remove any extensions at the ends of files.
+E.g., `.../abc.html` becomes `.../abc`.
+
 ## License
 
 ISC
