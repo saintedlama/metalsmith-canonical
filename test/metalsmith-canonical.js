@@ -142,6 +142,26 @@ describe('metalsmith-canonical', function() {
     });
   });
 
+  it('should omit index with non-html extensions', () => {
+    const canonical = metalsmithCanonical({
+      hostname: 'http://localhost:8080',
+      omitIndex: true,
+      pattern: '**/*.hbs',
+    });
+
+    const files = {
+      'a\\b\\c\\index.md.hbs': {}
+    };
+
+    canonical(files, {}, () => {});
+
+    expect(files).to.deep.equal({
+      'a\\b\\c\\index.md.hbs': {
+        canonical: 'http://localhost:8080/a/b/c'
+      }
+    });
+  });
+
   it('should omit extensions if omitExtensions option is specified', () => {
     const canonical = metalsmithCanonical({
       hostname: 'http://localhost:8080',
