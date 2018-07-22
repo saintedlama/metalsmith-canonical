@@ -58,7 +58,7 @@ module.exports = function canonical(options) {
 
     function omitIndex(url) {
 
-      return url.replace(/[/\\]index\.[^/\\]*$/, '/');
+      return url.replace(/(^|[/\\])index\.[^/\\]*$/, '$1');
     }
 
     function omitExtensions(url, extensionsToOmit) {

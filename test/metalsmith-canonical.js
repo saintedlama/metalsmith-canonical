@@ -122,6 +122,25 @@ describe('metalsmith-canonical', function() {
     });
   });
 
+  it('should omit "index.html" if it\'s in the root', () => {
+    const canonical = metalsmithCanonical({
+      hostname: 'http://localhost:8080',
+      omitIndex: true,
+    });
+
+    const files = {
+      'index.html': {}
+    };
+
+    canonical(files, {}, () => {});
+
+    expect(files).to.deep.equal({
+      'index.html': {
+        canonical: 'http://localhost:8080'
+      }
+    });
+  });
+
   it('should omit only exact matches of "index.html"', () => {
     const canonical = metalsmithCanonical({
       hostname: 'http://localhost:8080',
