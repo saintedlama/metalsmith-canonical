@@ -27,7 +27,7 @@
   "homepage": "https://github.com/saintedlama/metalsmith-canonical#readme",
   "dependencies": {
     "lodash": "^4.17.10",
-    "multimatch": "^2.1.0",
+    "multimatch": "^7.0.0",
     "url-join": "^4.0.0"
   },
   "devDependencies": {
