@@ -26,18 +26,18 @@
   },
   "homepage": "https://github.com/saintedlama/metalsmith-canonical#readme",
   "dependencies": {
-    "lodash": "^4.17.10",
-    "multimatch": "^2.1.0",
-    "url-join": "^4.0.0"
+    "lodash": "^4.18.1",
+    "multimatch": "^8.0.0",
+    "url-join": "^5.0.0"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "coveralls": "^3.0.1",
-    "cross-env": "^5.2.0",
-    "eslint": "^5.0.0",
-    "metalsmith": "^2.3.0",
-    "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
-    "standard-version": "^4.4.0"
+    "chai": "^6.2.2",
+    "coveralls": "^3.1.1",
+    "cross-env": "^10.1.0",
+    "eslint": "^10.9.0",
+    "metalsmith": "^2.7.0",
+    "mocha": "^11.8.0",
+    "nyc": "^18.0.0",
+    "standard-version": "^9.5.0"
   }
 }
